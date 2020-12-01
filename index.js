@@ -8,14 +8,14 @@ const bot = new SlackBot({
 });
 
 //Start Handler
+//commenting out due to randomly messaging when server refreshes.
+// bot.on('start', () => {
+//     const params = {
+//         icon_emoji: ':books:'
+//     }
 
-bot.on('start', () => {
-    const params = {
-        icon_emoji: ':books:'
-    }
-
-    bot.postMessageToChannel('general', 'Here are some great quotes.', params)
-});
+//     bot.postMessageToChannel('general', 'Here are some great quotes.', params)
+// });
 
 //Error Handler
 bot.on('error', (err)=> console.log(err));
@@ -31,6 +31,9 @@ bot.on('message', (data) => {
 
 //Respond to data
 function handleMessage(message) {
+    if(message.includes(' hello')){
+        sayHello();
+    }
     if(message.includes(' randomquote')){
         getRandQuote();
     }else if(message.includes(' authorquote')){
@@ -39,6 +42,18 @@ function handleMessage(message) {
         runHelp();
     }
 };
+
+//Says hello
+function sayHello() {
+
+        const params = {
+            icon_emoji: ':books:'
+        };
+    
+        bot.postMessageToChannel('general', 
+        `Hello! Get ready for some great quotes`, params) 
+    
+}
 
 //Insert the random quote
 function getRandQuote() {
