@@ -38,7 +38,7 @@ function handleMessage(message) {
     }else if(message.includes(' help')){
         runHelp();
     }else{
-        runHelp();
+        return
     }
 };
 
