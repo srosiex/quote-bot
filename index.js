@@ -37,6 +37,8 @@ function handleMessage(message) {
         getAuthorQuote();
     }else if(message.includes(' help')){
         runHelp();
+    }else{
+        runHelp();
     }
 };
 
